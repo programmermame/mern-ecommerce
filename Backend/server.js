@@ -1,5 +1,6 @@
 import express from 'express';
 import { PORT } from './config/dotenv.js';
+import connectDatabase from './config/db.js';
 
 const app = express();
 
@@ -12,8 +13,8 @@ app.get("/", (req, res) => {
 });
 
 
-
+connectDatabase();
 
 app.listen(PORT, () => {
     console.log(`server running on PORT ${PORT}`);
-})
+});
