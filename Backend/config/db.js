@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import { MONGO_URI } from "./dotenv.js";
 
-const connectDatabase = () => {
+const connectDatabase = async () => {
     try {
-        const database = mongoose.connect(MONGO_URI);
+        const database = await mongoose.connect(MONGO_URI);
         console.log("Successfully connected to MONGODB");
 
     } catch (error) {
