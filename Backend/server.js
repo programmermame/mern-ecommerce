@@ -1,7 +1,9 @@
 import express from 'express';
 import { PORT } from './config/dotenv.js';
 import connectDatabase from './config/db.js';
-import authRoutes from './routes/authRoutes.js'
+import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js'
 
 const app = express();
 
@@ -14,7 +16,9 @@ app.get("/", (req, res) => {
 });
 
 //routes
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api", productRoutes);
+app.use("/api", orderRoutes);
 
 
 app.listen(PORT, async () => {
