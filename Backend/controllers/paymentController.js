@@ -34,8 +34,10 @@ export const createCheckoutSession = async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: "http://localhost:5173/products",
+            // success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
+            // cancel_url: "http://localhost:5173/products",
+            success_url: `https://mern-ecommerce-aeqr.onrender.com/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: "https://mern-ecommerce-aeqr.onrender.com/products",
         })
         res.json({ url: session.url });
     } catch (error) {
