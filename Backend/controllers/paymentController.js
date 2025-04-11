@@ -34,8 +34,8 @@ export const createCheckoutSession = async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: "http://localhost:3000",
-            cancel_url: "http://localhost:3000",
+            success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: "http://localhost:5173/products",
         })
         res.json({ url: session.url });
     } catch (error) {
@@ -43,4 +43,23 @@ export const createCheckoutSession = async (req, res) => {
         res.status(500).json({ error: 'Checkout session creation failed', message: error });
     }
 
+}
+
+export const verifySession = async (req, res) => {
+    const { sessionId } = req.body;
+
+    try {
+        // Retrieve the session from Stripe
+        const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+        // Check if the payment was successful
+        if (session.payment_status === 'paid') {
+            res.json({ status: 'succeeded' });
+        } else {
+            res.json({ status: 'failed' });
+        }
+    } catch (err) {
+        console.error("Error verifying session", err);
+        res.status(400).json({ error: 'Error verifying session' });
+    }
 }
