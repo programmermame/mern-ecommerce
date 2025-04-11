@@ -10,7 +10,8 @@ export default defineConfig({
     port: process.env.PORT || 5173,
     allowedHosts: ['mern-ecommerce-aeqr.onrender.com'],
     proxy: {
-      '/api': 'http://localhost:3000',  // Proxy requests to backend
+      // '/api': 'http://localhost:3000',  // Proxy requests to backend
+      '/api': 'https://mern-ecommerce-backend-hpp7.onrender.com',  // Proxy requests to backend
     },
   }
 
