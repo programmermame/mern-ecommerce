@@ -21,7 +21,6 @@ const Checkout = () => {
     const handleCheckout = async () => {
         try {
             if (!user || !user._id) {
-                alert("Please login to proceed to checkout.");
                 navigate("/login");
                 return;
             }
