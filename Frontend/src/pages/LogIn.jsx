@@ -9,12 +9,14 @@ import { AuthContext } from "../context/AuthContext"; // ✅ Import AuthContext
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     const { login } = useContext(AuthContext); // ✅ Access the login function
 
     // Handle log-in
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("");
         try {
             const response = await axios.post("/api/auth/login", {
                 email,
@@ -30,8 +32,9 @@ const LogIn = () => {
             // Redirect to homepage or profile
             navigate("/");
         } catch (error) {
-            // Show an error toast if login fails
-            console.error("Login failed", error);
+            const message = error.response?.data?.message || "Something went wrong. Please try again"
+            setError(message);
+            console.log("ERROR MESSAGE", message);
         }
     };
 
@@ -47,6 +50,11 @@ const LogIn = () => {
                     Log In
                 </h2>
                 <form onSubmit={handleSubmit}>
+                    {error && (
+                        <div className="mb-4 text-red-600 text-sm text-center">
+                            {error}
+                        </div>
+                    )}
                     <motion.input
                         type="email"
                         placeholder="Email"
