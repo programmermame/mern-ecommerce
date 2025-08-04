@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("/api/products");
+                const response = await axios.get("https://pick-out-backend-service-on-render.onrender.com/api/products");
                 setProducts(response.data.message.slice(0, 4)); // Limit to 5 products
             } catch (error) {
                 console.error("Failed to fetch products:", error);

@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('/api/auth/user', {
+            axios.get('https://pick-out-backend-service-on-render.onrender.com/api/auth/user', {
                 headers: { Authorization: `Bearer ${token}` }
             })
                 .then((response) => setUser(response.data.user))
@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
     const login = (token) => {
         localStorage.setItem("token", token)
-        axios.get('/api/auth/user', {
+        axios.get('https://pick-out-backend-service-on-render.onrender.com/api/auth/user', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then((response) => setUser(response.data.user))
