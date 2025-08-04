@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: process.env.PORT || 5173,
-    allowedHosts: ['*'],
+    allowedHosts: ['pick-out.onrender.com','pick-out-backend-service-on-render.onrender.com'],
     proxy: {
       // '/api': 'http://localhost:3000',  // Proxy requests to backend
       '/api': 'https://pick-out-backend-service-on-render.onrender.com/',  // Proxy requests to backend
