@@ -18,7 +18,7 @@ const LogIn = () => {
         e.preventDefault();
         setError("");
         try {
-            const response = await axios.post("/api/auth/login", {
+            const response = await axios.post("https://pick-out-backend-service-on-render.onrender.com/api/auth/login", {
                 email,
                 password,
             });

@@ -26,7 +26,7 @@ const Checkout = () => {
             }
 
             // 1. Create order in backend
-            const orderResponse = await axios.post("/api/orders", {
+            const orderResponse = await axios.post("https://pick-out-backend-service-on-render.onrender.com/api/orders", {
                 user: user._id,
                 products: cartItems.map(item => ({
                     productId: item._id,
@@ -37,7 +37,7 @@ const Checkout = () => {
             const { order } = orderResponse.data;
 
             // 2. Get Stripe checkout session
-            const sessionResponse = await axios.post("/api/create-checkout-session", {
+            const sessionResponse = await axios.post("https://pick-out-backend-service-on-render.onrender.com/api/create-checkout-session", {
                 orderId: order._id,
             });
 
