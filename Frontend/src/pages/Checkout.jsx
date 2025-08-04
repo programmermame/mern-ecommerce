@@ -37,7 +37,7 @@ const Checkout = () => {
             const { order } = orderResponse.data;
 
             // 2. Get Stripe checkout session
-            const sessionResponse = await axios.post("https://pick-out-backend-service-on-render.onrender.com/api/create-checkout-session", {
+            const sessionResponse = await axios.post("/api/create-checkout-session", {
                 orderId: order._id,
             });
 
