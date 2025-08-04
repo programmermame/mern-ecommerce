@@ -5,9 +5,11 @@ import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
+import cors from 'cors'
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 
