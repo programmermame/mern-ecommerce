@@ -11,7 +11,7 @@ export default defineConfig({
     allowedHosts: ['pickout.onrender.com'],
     proxy: {
       // '/api': 'http://localhost:3000',  // Proxy requests to backend
-      '/api': 'https://mern-ecommerce-production-7b91.up.railway.app/',  // Proxy requests to backend
+      '/api': 'https://pick-out-backend-service-on-render.onrender.com/',  // Proxy requests to backend
     },
   }
 

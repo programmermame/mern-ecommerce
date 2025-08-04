@@ -14,7 +14,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://pick-out-backend-service-on-render.onrender.com/api/auth/register", {
+            const response = await axios.post("/api/auth/register", {
                 name,
                 email,
                 password,

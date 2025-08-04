@@ -20,7 +20,7 @@ const Success = () => {
         const verifyPayment = async () => {
             if (sessionId) {
                 try {
-                    const response = await axios.post('https://pick-out-backend-service-on-render.onrender.com/api/verify-session', { sessionId });
+                    const response = await axios.post('/api/verify-session', { sessionId });
                     const status = response.data.status;
 
                     if (status === 'succeeded') {

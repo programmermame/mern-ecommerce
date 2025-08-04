@@ -26,7 +26,7 @@ const Checkout = () => {
             }
 
             // 1. Create order in backend
-            const orderResponse = await axios.post("https://pick-out-backend-service-on-render.onrender.com/api/orders", {
+            const orderResponse = await axios.post("/api/orders", {
                 user: user._id,
                 products: cartItems.map(item => ({
                     productId: item._id,
